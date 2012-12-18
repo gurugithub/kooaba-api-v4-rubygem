@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Cristi Prodan"]
   s.email       = ["prodan@kooaba.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{A gem for accessing the kooaba APIs}
+  s.description = %q{A lightweight gem for accessing the kooaba APIs. For more information on the APIs check out http://kooaba.github.com}
 
   s.rubyforge_project = "kooaba"
 
