@@ -16,21 +16,24 @@ This is a lightweight gem (no other dependencies) for accessing the [kooaba APIs
 
 ## Uploading an item
 
-In order to upload items into your account, you need an upload api key and a bucket ID. Both of these you can find in your account at https://platform.kooaba.com .
+In order to upload items into your account, you need an UPLOAD\_KEY and a BUCKET\_ID. Both of these you can find in your account at https://platform.kooaba.com .
+
+    require 'rubygems'
+    require 'kooaba'
 
     # set the upload key
-    Kooaba.upload_key = "KPeoZU7LZ91ETJziAMjacw9LEArzBfZYcXgVCZr0"
+    Kooaba.upload_key = <UPLOAD_KEY>
 
     # initialize the item
     item = Kooaba::Item.new(
       :title => "A lake",
       :metadata => nil,
-      :image_files => "/home/cristi/Pictures/background/background/1.jpg",
+      :image_files => <PATH_TO_IMAGE_ON_LOCAL_SYSTEM>,
       :referenceId => "lake"
       )
 
     # select the bucket you want to put the item into
-    bucket_id = "108695a2-7825-4a98-8bda-b980782c5e33"
+    bucket_id = <BUCKET_ID>
 
     # upload the item
     response = Kooaba.upload(item, bucket_id)
@@ -48,14 +51,16 @@ The reponse will look like:
 
 ## Making a query
 
-    require File.join(File.dirname(__FILE__), "..", "lib", "kooaba.rb")
+To make a query you need a QUERY_KEY which you can find under the API Access section in your account at https://platform.kooaba.com .
 
+    require 'rubygems'
+    require 'kooaba'
 
     # set the query key
-    Kooaba.query_key = "QC7qkcDdSxEkXTcDBRWj9GE52xRVqwjYZTW1DE52"
+    Kooaba.query_key = <QUERY_KEY>
 
     # send the query to the kooaba servers
-    query = Kooaba::Query.new(:image_path => "/home/cristi/Pictures/background/background/1308504847996.jpg")
+    query = Kooaba::Query.new(:image_path => <PATH_TO_QUERY_IMAGE_ON_LOCAL_SYSTEM>)
     response = Kooaba.query(query)
 
     # inspect the result

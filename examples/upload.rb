@@ -1,19 +1,19 @@
-require File.join(File.dirname(__FILE__), "..", "lib", "kooaba.rb")
-
+require 'rubygems'
+require 'kooaba'
 
 # set the upload key
-Kooaba.upload_key = "KPeoZU7LZ91ETJziAMjacw9LEArzBfZYcXgVCZr0"
+Kooaba.upload_key = <ENTER_KEY_HERE>
 
 # initialize the item
 item = Kooaba::Item.new(
   :title => "A lake",
   :metadata => nil,
-  :image_files => "/home/cristi/Pictures/background/background/1.jpg",
+  :image_files => <PATH_TO_IMAGE>,
   :referenceId => "lake"
   )
 
 # select the bucket you want to put the item into
-bucket_id = "108695a2-7825-4a98-8bda-b980782c5e33"
+bucket_id = <BUCKET_ID>
 
 # upload the item
 response = Kooaba.upload(item, bucket_id)

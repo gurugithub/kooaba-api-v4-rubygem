@@ -1,11 +1,11 @@
-require File.join(File.dirname(__FILE__), "..", "lib", "kooaba.rb")
-
+require 'rubygems'
+require 'kooaba'
 
 # set the query key
-Kooaba.query_key = "QC7qkcDdSxEkXTcDBRWj9GE52xRVqwjYZTW1DE52"
+Kooaba.query_key = <QUERY_KEY>
 
 # send the query to the kooaba servers
-query = Kooaba::Query.new(:image_path => "/home/cristi/Pictures/background/background/1308504847996.jpg")
+query = Kooaba::Query.new(:image_path => <PATH_TO_QUERY_IMAGE>)
 response = Kooaba.query(query)
 
 # inspect the result

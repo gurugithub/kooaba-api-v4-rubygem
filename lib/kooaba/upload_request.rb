@@ -5,15 +5,18 @@ require 'net/https'
 require 'time'
 
 module Kooaba
+
   class UploadRequest
+
     attr_accessor :message
     attr_accessor :bucket_id
 
     def initialize(item, bucket_id)
       @bucket_id = bucket_id
       @message = MultipartMessage.new
-      item.image_files.each do |image_file|
-        @message.add_file_part('images', image_file, "image/jpeg") #TODO fix this
+      item.image_files.each do |image_path|
+        content_type = `file --mime-type -b #{image_path}`
+        @message.add_file_part('images', image_path, content_type)
       end
       @message.add_text_part('referenceId', item.reference_id) if item.reference_id
       @message.add_text_part('title', item.title) if item.title
@@ -40,5 +43,7 @@ module Kooaba
 
       http.start { |h| h.request(req) }
     end
+
   end
+
 end
