@@ -39,7 +39,7 @@ module Kooaba
       req.body = @message.body
       req['date'] = Time.new.httpdate
       req['content-type'] = @message.content_type
-      req['authorization'] = "Token #{Kooaba.upload_key}"
+      req['authorization'] = "Token #{Kooaba.data_key}"
 
       http.start { |h| h.request(req) }
     end

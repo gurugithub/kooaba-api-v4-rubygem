@@ -1,13 +1,13 @@
 require File.join(File.dirname(__FILE__), "..", "lib", "kooaba.rb")
 
-# set the upload key
-Kooaba.upload_key = <UPLOAD_KEY>
+# set the data key
+Kooaba.data_key = <data-key-secret-token>
 
 # initialize the item
 item = Kooaba::Item.new(
   :title => "A lake",
   :metadata => nil,
-  :image_files => <PATH_TO_IMAGE>,
+  :image_files => <path-to-image-on-local-filesystem>,
   :referenceId => "lake"
   )
 

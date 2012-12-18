@@ -2,16 +2,16 @@ module Kooaba
   QUERY_URL  = "https://query-api.kooaba.com/v4/"
   UPLOAD_URL = "https://upload-api.kooaba.com/api/v4/"
 
-  def self.upload_key=(upload_key)
-    @@upload_key = upload_key
+  def self.data_key=(data_key)
+    @@data_key = data_key
   end
 
   def self.query_key=(query_key)
     @@query_key = query_key
   end
 
-  def self.upload_key
-    @@upload_key
+  def self.data_key
+    @@data_key
   end
 
   def self.query_key

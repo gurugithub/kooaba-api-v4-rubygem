@@ -11,29 +11,30 @@ This is a lightweight gem (no other dependencies) for accessing the [kooaba APIs
 
 2. Install the kooaba gem:
 
+
     gem install kooaba
 
 
 ## Uploading an item
 
-In order to upload items into your account, you need an UPLOAD\_KEY and a BUCKET\_ID. Both of these you can find in your account at https://platform.kooaba.com .
+In order to upload items into your account, you need a `data-key` and a `bucket-id`. The `data-key` you can find on your account on the [kooaba platform](https://platform.kooaba.com), under API Access -> Data API Keys. You need to use the `secret-token` string. The bucket id you find under the Reference Items section.
 
     require 'rubygems'
     require 'kooaba'
 
-    # set the upload key
-    Kooaba.upload_key = <UPLOAD_KEY>
+    # set the data key
+    Kooaba.data_key = <data-key-secret-token>
 
     # initialize the item
     item = Kooaba::Item.new(
       :title => "A lake",
       :metadata => nil,
-      :image_files => <PATH_TO_IMAGE_ON_LOCAL_SYSTEM>,
+      :image_files => <path-to-image-on-local-filesystem>,
       :referenceId => "lake"
       )
 
     # select the bucket you want to put the item into
-    bucket_id = <BUCKET_ID>
+    bucket_id = <bucket-id>
 
     # upload the item
     response = Kooaba.upload(item, bucket_id)
@@ -51,16 +52,16 @@ The reponse will look like:
 
 ## Making a query
 
-To make a query you need a QUERY_KEY which you can find under the API Access section in your account at https://platform.kooaba.com .
+To make a query you need a `query-key` which you can find under the API Access -> Query API Keys section in your [kooaba account](https://platform.kooaba.com). You need to use the `secret-token` string.
 
     require 'rubygems'
     require 'kooaba'
 
     # set the query key
-    Kooaba.query_key = <QUERY_KEY>
+    Kooaba.query_key = <query-key-secret-token>
 
     # send the query to the kooaba servers
-    query = Kooaba::Query.new(:image_path => <PATH_TO_QUERY_IMAGE_ON_LOCAL_SYSTEM>)
+    query = Kooaba::Query.new(:image_path => <path-to-query-image-on-local-filesystem>)
     response = Kooaba.query(query)
 
     # inspect the result

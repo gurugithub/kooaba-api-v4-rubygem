@@ -1,10 +1,10 @@
 require File.join(File.dirname(__FILE__), "..", "lib", "kooaba.rb")
 
 # set the query key
-Kooaba.query_key = <QUERY_KEY>
+Kooaba.query_key = <query-key-secret-token>
 
 # send the query to the kooaba servers
-query = Kooaba::Query.new(:image_path => <PATH_TO_IMAGE>)
+query = Kooaba::Query.new(:image_path => <path-to-image>)
 response = Kooaba.query(query)
 
 # inspect the result
