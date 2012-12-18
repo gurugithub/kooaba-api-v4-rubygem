@@ -10,8 +10,8 @@ module Kooaba
 
     def initialize(query)
       @message = MultipartMessage.new
-      content_type = `file --mime-type -b #{qury.image_path}`
-      @message.add_file_part('image', query.image_path)
+      content_type = `file --mime-type -b #{query.image_path}`.chop
+      @message.add_file_part('image', query.image_path, content_type)
       @message.add_text_part('max_results', query.max_results) if query.max_results
       @message.add_text_part('user_data', query.user_data) if query.user_data
     end

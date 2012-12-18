@@ -26,7 +26,8 @@ module Kooaba
 
       unless io.respond_to?(:content_type)
         io.extend(TypedFile)
-        io.content_type = type
+        content_type = (type == "image/jpeg") ? "image/jpg" : type
+        io.content_type = content_type
       end
 
       @file_parts << [name, io]

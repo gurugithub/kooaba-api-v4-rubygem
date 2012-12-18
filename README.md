@@ -1,12 +1,12 @@
 # kooaba
 
-This gem is currently in Beta phase. We advise you not to use this in a production system.
+This gem is currently in Beta phase. We advise you not to use this in a production system!
 
 This is a lightweight gem (no other dependencies) for accessing the [kooaba APIs](http://kooaba.github.com).
 
 ## Installation
 
-1. Make sure you have an accout in the kooaba platform at [https://platform.kooaba.com/](https://platform.kooaba.com). In the API Access section you will find your API key for accessing the platform.
+1. Make sure you have an account on the kooaba platform at [https://platform.kooaba.com/](https://platform.kooaba.com). In the API Access section you will find your API keys for uploading items and making queries.
 
 
 2. Install the kooaba gem:

@@ -1,8 +1,7 @@
-require 'rubygems'
-require 'kooaba'
+require File.join(File.dirname(__FILE__), "..", "lib", "kooaba.rb")
 
 # set the upload key
-Kooaba.upload_key = <ENTER_KEY_HERE>
+Kooaba.upload_key = <UPLOAD_KEY>
 
 # initialize the item
 item = Kooaba::Item.new(
