@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Kooaba::VERSION
   s.authors     = ["Cristi Prodan"]
   s.email       = ["prodan@kooaba.com"]
-  s.homepage    = "https://github.com/kooaba/kooaba-ruby"
+  s.homepage    = "https://github.com/kooaba/kooaba-api-v4-rubygem"
   s.summary     = %q{A gem for accessing the kooaba APIs}
   s.description = %q{A lightweight gem for accessing the kooaba APIs. For more information on the APIs check out http://kooaba.github.com}
 
