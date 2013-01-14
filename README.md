@@ -39,16 +39,23 @@ In order to upload items into your account, you need a `data-key` and a `bucket-
     # upload the item
     response = Kooaba.upload(item, bucket_id)
 
+    # The response is a Net::HTTPResponse.
     puts "Response code: #{response.code}"
+    puts "Response message: #{response.message}"
     puts "Response body: #{response.body}"
 
+    puts "Item uuid: #{item.uuid}"
+    puts "Item enabled: #{item.enabled}"
+    puts "Item images sha1's: #{item.images_sha1.join(", ")}"
 
 The reponse will look like:
 
     Response code: 201
     Response body: {"uuid":"d956a280-d678-4260-9115-d0382175ae90","enabled":true,"images":[{"sha1":"3d3d8d00cdaf3de4f346f84e83e207780a7e2afe"}]}
 
-
+    Item uuid: d956a280-d678-4260-9115-d0382175ae90
+    Item enabled: true
+    Item images sha1's: 3d3d8d00cdaf3de4f346f84e83e207780a7e2afe
 
 ## Making a query
 
