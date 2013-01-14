@@ -8,7 +8,7 @@ item = Kooaba::Item.new(
   :title => "A lake",
   :metadata => nil,
   :image_files => <path-to-image-on-local-filesystem>,
-  :referenceId => "lake"
+  :reference_id => "lake"
   )
 
 # select the bucket you want to put the item into

@@ -18,7 +18,7 @@ module Kooaba
         content_type = `file --mime-type -b #{image_path}`
         @message.add_file_part('images', image_path, content_type)
       end
-      @message.add_text_part('referenceId', item.reference_id) if item.reference_id
+      @message.add_text_part('reference_id', item.reference_id) if item.reference_id
       @message.add_text_part('title', item.title) if item.title
       @message.add_text_part('enabled', item.enabled)
       @message.add_text_part('metadata', item.metadata) if item.metadata
