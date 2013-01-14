@@ -1,5 +1,7 @@
 # kooaba
 
+[![Build Status](https://secure.travis-ci.org/kooaba/kooaba-api-v4-rubygem.png)](http://travis-ci.org/kooaba/kooaba-api-v4-rubygem)
+
 This gem is currently in Beta phase. We advise you not to use this in a production system!
 
 This is a lightweight gem (no other dependencies) for accessing the [kooaba APIs](http://kooaba.github.com).
