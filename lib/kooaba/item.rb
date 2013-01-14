@@ -1,6 +1,10 @@
 module Kooaba
 
   class Item
+
+    attr_accessor :uuid
+    attr_accessor :images_sha1
+
     attr_accessor :title
     attr_accessor :metadata
     attr_accessor :enabled

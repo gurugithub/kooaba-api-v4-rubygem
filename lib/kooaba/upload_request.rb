@@ -4,6 +4,10 @@ require 'net/http'
 require 'net/https'
 require 'time'
 
+require 'json'
+require 'net/http'
+
+
 module Kooaba
 
   class UploadRequest
@@ -11,7 +15,10 @@ module Kooaba
     attr_accessor :message
     attr_accessor :bucket_id
 
+    attr_accessor :item
+
     def initialize(item, bucket_id)
+      @item = item
       @bucket_id = bucket_id
       @message = MultipartMessage.new
       item.image_files.each do |image_path|
@@ -30,6 +37,13 @@ module Kooaba
     def start
       url = URI.parse(Kooaba::UPLOAD_URL + "buckets/" + bucket_id + "/items")
 
+      resp = make_request(url)
+      parse_request(resp)
+
+      return resp
+    end
+
+    def make_request(url)
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -41,7 +55,39 @@ module Kooaba
       req['content-type'] = @message.content_type
       req['authorization'] = "Token #{Kooaba.data_key}"
 
-      http.start { |h| h.request(req) }
+      resp = http.request(req)
+    end
+
+    def parse_request(http_resp)
+      case http_resp
+      when Net::HTTPSuccess
+        parse_2xx(http_resp)
+      when Net::HTTPClientError
+        parse_4xx(http_resp)
+      when Net::HTTPServerError
+        parse_5xx(http_resp)
+      else
+        unknown_response(http_resp)
+      end
+    end
+
+    def parse_2xx(http_resp)
+      json = JSON.parse(http_resp.body)
+      @item.uuid = json["uuid"]
+      @item.enabled = json["enabled"]
+      @item.images_sha1 = json["images"].empty? ? [] : json["images"].map {|a| a["sha1"]}
+    end
+
+    def parse_4xx(http_resp)
+      # do nothing for now
+    end
+
+    def parse_5xx(http_resp)
+      # do nothing for now
+    end
+
+    def unknown_response(http_resp)
+      raise StandardError, "Unknown response: #{http_resp.code} #{http_resp.body} "
     end
 
   end
