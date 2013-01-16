@@ -19,7 +19,7 @@ module Kooaba
     def add_file_part(name, file, type)
       case file
       when String
-        io = open(file)
+        io = File.open(file, "rb")
       else
         io = file
       end

@@ -47,6 +47,7 @@ module Kooaba
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      http.read_timeout = 500
 
       req = Net::HTTP::Post.new(url.path)
 
@@ -55,7 +56,7 @@ module Kooaba
       req['content-type'] = @message.content_type
       req['authorization'] = "Token #{Kooaba.data_key}"
 
-      resp = http.request(req)
+      http.request(req)
     end
 
     def parse_request(http_resp)
