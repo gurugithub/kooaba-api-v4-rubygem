@@ -42,14 +42,14 @@ module Kooaba
     end
 
     def body
-      boundary_marker = "--#{boundary_token}\r\n"
+      boundary_marker = "--#{boundary_token}\r\n".force_encoding("UTF-8")
       body = @text_parts.map { |param|
         (name, value) = param
         boundary_marker + text_to_multipart(name, value)
-      }.join('') + @file_parts.map { |param|
+      }.map{|p| p.force_encoding("UTF-8")}.join('') + @file_parts.map { |param|
         (name, value) = param
         boundary_marker + data_to_multipart(name, value)
-      }.join('') + "--#{boundary_token}--\r\n"
+      }.map{|p| p.force_encoding("UTF-8")}.join('') + "--#{boundary_token}--\r\n".force_encoding("UTF-8")
     end
 
     protected
