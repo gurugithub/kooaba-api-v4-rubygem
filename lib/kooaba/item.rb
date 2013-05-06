@@ -10,6 +10,8 @@ module Kooaba
     attr_accessor :enabled
     attr_accessor :reference_id
     attr_accessor :image_files
+    attr_accessor :locale
+    attr_accessor :kind
 
     def initialize(options = {})
       raise TypeError, "enabled should be true or false" unless [nil, true, false].include? options[:enabled]
@@ -22,6 +24,8 @@ module Kooaba
       @enabled      = options[:enabled] == nil ? true : options[:enabled]
       @reference_id = options[:reference_id]
       @image_files  = options[:image_files] || []
+      @locale       = options[:locale]
+      @kind         = options[:kind]
     end
   end
 

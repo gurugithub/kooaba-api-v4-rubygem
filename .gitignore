@@ -2,3 +2,5 @@
 .bundle
 Gemfile.lock
 pkg/*
+internal-test.rb
+

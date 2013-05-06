@@ -29,6 +29,8 @@ module Kooaba
       @message.add_text_part('title', item.title) if item.title
       @message.add_text_part('enabled', item.enabled)
       @message.add_text_part('metadata', item.metadata) if item.metadata
+      @message.add_text_part('kind', item.kind) if item.kind
+      @message.add_text_part('locale', item.locale) if item.locale
     end
 
     #
