@@ -3,10 +3,7 @@ require 'uri'
 require 'net/http'
 require 'net/https'
 require 'time'
-
 require 'json'
-require 'net/http'
-
 
 module Kooaba
 
@@ -82,11 +79,11 @@ module Kooaba
     end
 
     def parse_4xx(http_resp)
-      # do nothing for now
+      raise ArgumentError.new("Kooaba Response: #{http_resp.code} #{http_resp.body}.")
     end
 
     def parse_5xx(http_resp)
-      # do nothing for now
+      raise StandardError.new("Internal Server Error: #{http_resp.code} #{http_resp.body}")
     end
 
     def unknown_response(http_resp)
